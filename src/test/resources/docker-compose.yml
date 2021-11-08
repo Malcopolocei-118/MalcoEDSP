@@ -1,0 +1,18 @@
+services:
+  ED_test:
+    image: mysql:8.0.19
+    tmpfs: /var/lib/mysql:rw
+    container_name: ED_test
+    command: [
+        'mysqld',
+        '--port=3306',
+        '--innodb-buffer-pool-size=20M',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+        '--default-time-zone=+8:00',
+    ]
+    environment:
+      - "MYSQL_DATABASE=EDCP_test"
+      - "MYSQL_ROOT_PASSWORD=12345678"
+    ports:
+      - "10101:3306"
